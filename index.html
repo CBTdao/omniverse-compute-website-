@@ -4,13 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Omniverse Compute ($OMC) | Decentralized GPU Compute Network</title>
-  <meta name="description" content="Omniverse Compute ($OMC) - The Next-Gen Decentralized GPU Compute Network on BNB Chain. Stake, share idle power, and power the AI & Rendering future.">
+  <meta name="description" content="Omniverse Compute ($OMC) - The Next-Gen Decentralized GPU Compute Network on BNB Chain.">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --primary: #6366f1;
@@ -35,29 +31,36 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(11, 15, 26, 0.9);
+      background: rgba(11, 15, 26, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       z-index: 1000;
-      padding: 1rem 2rem;
+      padding: 0.9rem 1.8rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
     }
 
     .logo {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 700;
       background: linear-gradient(90deg, var(--primary-light), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-decoration: none;
       cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.6rem;
       list-style: none;
     }
 
@@ -65,18 +68,35 @@
       color: var(--muted);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.2s;
+      font-size: 0.95rem;
       cursor: pointer;
+      transition: color 0.2s;
     }
 
     .nav-links a:hover,
     .nav-links a.active {
-      color: #ffffff;
+      color: #fff;
+    }
+
+    /* 语言选择器 */
+    .lang-select {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .lang-select:hover {
+      border-color: var(--primary-light);
     }
 
     section {
       min-height: 100vh;
-      padding: 8rem 2rem 5rem;
+      padding: 7.5rem 1.8rem 4rem;
       max-width: 1100px;
       margin: 0 auto;
       display: none;
@@ -84,54 +104,55 @@
 
     section.active {
       display: block;
-      animation: fadeIn 0.4s ease;
+      animation: fadeIn 0.35s ease;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
-      font-size: 3.1rem;
+      font-size: 3rem;
       font-weight: 800;
       line-height: 1.15;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #ffffff 20%, var(--accent));
+      margin-bottom: 1.4rem;
+      background: linear-gradient(135deg, #fff 25%, var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1.2rem;
-      color: #ffffff;
+      font-size: 2.1rem;
+      margin-bottom: 1.1rem;
+      color: #fff;
     }
 
     p {
       color: var(--muted);
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       max-width: 680px;
     }
 
     .btn {
       display: inline-block;
-      padding: 0.9rem 1.8rem;
+      padding: 0.85rem 1.7rem;
       background: linear-gradient(135deg, var(--primary), #4f46e5);
       color: white;
       text-decoration: none;
-      border-radius: 12px;
+      border-radius: 11px;
       font-weight: 600;
-      margin-top: 1.5rem;
-      margin-right: 1rem;
+      margin-top: 1.4rem;
+      margin-right: 0.9rem;
       transition: all 0.25s;
       border: none;
       cursor: pointer;
+      font-size: 0.95rem;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+      box-shadow: 0 8px 22px rgba(99, 102, 241, 0.35);
     }
 
     .btn-outline {
@@ -147,36 +168,36 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.4rem;
+      margin-top: 3.2rem;
     }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
+      border-radius: 15px;
+      padding: 1.8rem;
       transition: all 0.3s;
     }
 
     .card:hover {
       border-color: var(--primary);
-      transform: translateY(-4px);
+      transform: translateY(-3px);
     }
 
     .card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
       color: white;
     }
 
     .airdrop-box {
       background: linear-gradient(145deg, #111827, #0f172a);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2.5rem;
-      margin-top: 2.5rem;
+      border-radius: 18px;
+      padding: 2.3rem;
+      margin-top: 2.3rem;
       max-width: 720px;
     }
 
@@ -184,45 +205,46 @@
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      margin-bottom: 1.4rem;
-      padding: 1.1rem;
+      margin-bottom: 1.3rem;
+      padding: 1rem;
       background: rgba(99, 102, 241, 0.08);
-      border-radius: 12px;
+      border-radius: 11px;
     }
 
     .condition-number {
       background: var(--primary);
       color: white;
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       flex-shrink: 0;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     footer {
       text-align: center;
-      padding: 3rem 2rem;
+      padding: 2.8rem 1.5rem;
       color: var(--muted);
       border-top: 1px solid var(--border);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
     footer a {
       color: var(--primary-light);
       text-decoration: none;
-      margin: 0 0.9rem;
+      margin: 0 0.8rem;
     }
 
     @media (max-width: 768px) {
-      h1 { font-size: 2.3rem; }
-      .nav-links { gap: 1.1rem; font-size: 0.95rem; }
-      nav { padding: 1rem 1.2rem; }
-      section { padding: 7rem 1.2rem 4rem; }
+      h1 { font-size: 2.15rem; }
+      .nav-links { display: none; }
+      nav { padding: 0.85rem 1rem; }
+      section { padding: 6.5rem 1.2rem 3.5rem; }
+      .nav-right { gap: 0.8rem; }
     }
   </style>
 </head>
@@ -230,116 +252,124 @@
 
   <!-- Navigation -->
   <nav>
-    <a class="logo" onclick="showPage('home')">Omniverse Compute</a>
-    <ul class="nav-links">
-      <li><a onclick="showPage('home')" class="nav-link active" data-page="home">Home</a></li>
-      <li><a onclick="showPage('whitepaper')" class="nav-link" data-page="whitepaper">Whitepaper</a></li>
-      <li><a onclick="showPage('testnet')" class="nav-link" data-page="testnet">Testnet</a></li>
-      <li><a onclick="showPage('airdrop')" class="nav-link" data-page="airdrop">Airdrop</a></li>
-    </ul>
+    <div class="logo" onclick="showPage('home')">Omniverse Compute</div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a onclick="showPage('home')" class="nav-link active" data-page="home" data-i18n="nav_home">Home</a></li>
+        <li><a onclick="showPage('whitepaper')" class="nav-link" data-page="whitepaper" data-i18n="nav_whitepaper">Whitepaper</a></li>
+        <li><a onclick="showPage('testnet')" class="nav-link" data-page="testnet" data-i18n="nav_testnet">Testnet</a></li>
+        <li><a onclick="showPage('airdrop')" class="nav-link" data-page="airdrop" data-i18n="nav_airdrop">Airdrop</a></li>
+      </ul>
+
+      <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="es">Español</option>
+        <option value="ko">한국어</option>
+        <option value="pt">Português</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
   </nav>
 
   <!-- Home -->
   <section id="home" class="active">
-    <h1>Next-Gen Decentralized<br>GPU Compute Network</h1>
-    <p>
+    <h1 data-i18n="home_title">Next-Gen Decentralized<br>GPU Compute Network</h1>
+    <p data-i18n="home_desc">
       Omniverse Compute ($OMC) is building the next-generation decentralized GPU compute network on BNB Chain. 
       Stake tokens, share idle GPU power, and help power the future of AI training and high-performance rendering.
     </p>
     <div>
-      <a class="btn" onclick="showPage('airdrop')">Join Airdrop</a>
-      <a class="btn btn-outline" onclick="showPage('whitepaper')">Read Whitepaper</a>
+      <a class="btn" onclick="showPage('airdrop')" data-i18n="btn_airdrop">Join Airdrop</a>
+      <a class="btn btn-outline" onclick="showPage('whitepaper')" data-i18n="btn_whitepaper">Read Whitepaper</a>
     </div>
 
     <div class="grid">
       <div class="card">
-        <h3>Decentralized Compute</h3>
-        <p>Anyone can contribute idle GPU resources and earn $OMC rewards, creating a truly open compute marketplace.</p>
+        <h3 data-i18n="card1_title">Decentralized Compute</h3>
+        <p data-i18n="card1_desc">Anyone can contribute idle GPU resources and earn $OMC rewards, creating a truly open compute marketplace.</p>
       </div>
       <div class="card">
-        <h3>AI & Rendering Focus</h3>
-        <p>Optimized for AI model training, inference, and high-quality rendering workloads.</p>
+        <h3 data-i18n="card2_title">AI & Rendering Focus</h3>
+        <p data-i18n="card2_desc">Optimized for AI model training, inference, and high-quality rendering workloads.</p>
       </div>
       <div class="card">
-        <h3>Built on BNB Chain</h3>
-        <p>Leveraging BNB Chain for low fees, high throughput, and scalable node operations.</p>
+        <h3 data-i18n="card3_title">Built on BNB Chain</h3>
+        <p data-i18n="card3_desc">Leveraging BNB Chain for low fees, high throughput, and scalable node operations.</p>
       </div>
     </div>
   </section>
 
   <!-- Whitepaper -->
   <section id="whitepaper">
-    <h2>Whitepaper</h2>
-    <p>Learn about the technology, tokenomics, and roadmap of Omniverse Compute.</p>
+    <h2 data-i18n="wp_title">Whitepaper</h2>
+    <p data-i18n="wp_desc">Learn about the technology, tokenomics, and roadmap of Omniverse Compute.</p>
 
     <div class="grid" style="margin-top: 3rem;">
       <div class="card">
-        <h3>Whitepaper Deck</h3>
-        <p style="margin-bottom: 1.5rem;">Concise presentation version of the project overview.</p>
-        <a href="assets/Omniverse Compute (OMC) Whitepaper Deck.pdf" class="btn" download>
-          Download Deck
-        </a>
+        <h3 data-i18n="wp_deck_title">Whitepaper Deck</h3>
+        <p data-i18n="wp_deck_desc" style="margin-bottom: 1.5rem;">Concise presentation version of the project overview.</p>
+        <a href="assets/Omniverse Compute (OMC) Whitepaper Deck.pdf" class="btn" download data-i18n="btn_download_deck">Download Deck</a>
       </div>
       <div class="card">
-        <h3>Full Whitepaper (English)</h3>
-        <p style="margin-bottom: 1.5rem;">Complete technical and economic documentation.</p>
-        <a href="assets/Omniverse Compute (OMC) Whitepaper - English Version.pdf" class="btn" download>
-          Download Full Whitepaper
-        </a>
+        <h3 data-i18n="wp_full_title">Full Whitepaper (English)</h3>
+        <p data-i18n="wp_full_desc" style="margin-bottom: 1.5rem;">Complete technical and economic documentation.</p>
+        <a href="assets/Omniverse Compute (OMC) Whitepaper - English Version.pdf" class="btn" download data-i18n="btn_download_full">Download Full Whitepaper</a>
       </div>
     </div>
   </section>
 
   <!-- Testnet -->
   <section id="testnet">
-    <h2>Testnet</h2>
-    <p>
+    <h2 data-i18n="tn_title">Testnet</h2>
+    <p data-i18n="tn_desc">
       The Omniverse Compute testnet is currently in preparation. Node operators will soon be able to experience staking, compute contribution, and reward mechanisms.
     </p>
 
     <div class="card" style="margin-top: 2.5rem; max-width: 680px;">
-      <h3>Current Status</h3>
-      <p style="margin: 1rem 0;">Status: <strong style="color: var(--accent);">Coming Soon</strong></p>
-      <p>Official launch details and access instructions will be announced via Twitter and Telegram.</p>
+      <h3 data-i18n="tn_status_title">Current Status</h3>
+      <p style="margin: 1rem 0;"><span data-i18n="tn_status_label">Status:</span> <strong style="color: var(--accent);" data-i18n="tn_status_value">Coming Soon</strong></p>
+      <p data-i18n="tn_status_desc">Official launch details and access instructions will be announced via Twitter and Telegram.</p>
       <div style="margin-top: 1.8rem;">
-        <a href="https://x.com/Omniverse_Depin" target="_blank" class="btn">Follow Official Twitter</a>
+        <a href="https://x.com/Omniverse_Depin" target="_blank" class="btn" data-i18n="btn_follow">Follow Official Twitter</a>
       </div>
     </div>
   </section>
 
   <!-- Airdrop -->
   <section id="airdrop">
-    <h2>Airdrop</h2>
-    <p>Complete the following tasks to become eligible for the early contributor airdrop.</p>
+    <h2 data-i18n="ad_title">Airdrop</h2>
+    <p data-i18n="ad_desc">Complete the following tasks to become eligible for the early contributor airdrop.</p>
 
     <div class="airdrop-box">
       <div class="condition">
         <div class="condition-number">1</div>
         <div>
-          <strong>Follow Official Twitter</strong><br>
-          Follow <a href="https://x.com/Omniverse_Depin" target="_blank" style="color: var(--accent);">@Omniverse_Depin</a>
+          <strong data-i18n="ad_step1_title">Follow Official Twitter</strong><br>
+          <span data-i18n="ad_step1_desc">Follow @Omniverse_Depin</span>
         </div>
       </div>
 
       <div class="condition">
         <div class="condition-number">2</div>
         <div>
-          <strong>Retweet & Comment</strong><br>
-          Retweet the official announcement post and leave a meaningful comment
+          <strong data-i18n="ad_step2_title">Retweet & Comment</strong><br>
+          <span data-i18n="ad_step2_desc">Retweet the official announcement post and leave a meaningful comment</span>
         </div>
       </div>
 
       <div class="condition">
         <div class="condition-number">3</div>
         <div>
-          <strong>Join Official Telegram</strong><br>
-          Join the official Telegram group (link will be updated soon)
+          <strong data-i18n="ad_step3_title">Join Official Telegram</strong><br>
+          <span data-i18n="ad_step3_desc">Join the official Telegram group (link will be updated soon)</span>
         </div>
       </div>
 
       <div style="margin-top: 2.2rem; text-align: center;">
-        <a href="https://x.com/Omniverse_Depin" target="_blank" class="btn">Complete Tasks</a>
-        <p style="margin-top: 1.3rem; font-size: 0.95rem; color: var(--muted);">
+        <a href="https://x.com/Omniverse_Depin" target="_blank" class="btn" data-i18n="btn_complete">Complete Tasks</a>
+        <p style="margin-top: 1.3rem; font-size: 0.95rem; color: var(--muted);" data-i18n="ad_note">
           * Final eligibility and snapshot details will be announced by the official team.
         </p>
       </div>
@@ -352,25 +382,347 @@
       <a href="https://x.com/Omniverse_Depin" target="_blank">Twitter / X</a>
       <a href="#" onclick="alert('Please replace with the real Telegram link')">Telegram</a>
     </div>
-    <p style="margin-top: 1.3rem;">© 2026 Omniverse Compute ($OMC). All rights reserved.</p>
+    <p style="margin-top: 1.2rem;" data-i18n="footer_copy">© 2026 Omniverse Compute ($OMC). All rights reserved.</p>
   </footer>
 
   <script>
-    function showPage(pageId) {
-      document.querySelectorAll('section').forEach(sec => {
-        sec.classList.remove('active');
+    // ====================== 多语言翻译 ======================
+    const translations = {
+      en: {
+        nav_home: "Home",
+        nav_whitepaper: "Whitepaper",
+        nav_testnet: "Testnet",
+        nav_airdrop: "Airdrop",
+        home_title: "Next-Gen Decentralized<br>GPU Compute Network",
+        home_desc: "Omniverse Compute ($OMC) is building the next-generation decentralized GPU compute network on BNB Chain. Stake tokens, share idle GPU power, and help power the future of AI training and high-performance rendering.",
+        btn_airdrop: "Join Airdrop",
+        btn_whitepaper: "Read Whitepaper",
+        card1_title: "Decentralized Compute",
+        card1_desc: "Anyone can contribute idle GPU resources and earn $OMC rewards, creating a truly open compute marketplace.",
+        card2_title: "AI & Rendering Focus",
+        card2_desc: "Optimized for AI model training, inference, and high-quality rendering workloads.",
+        card3_title: "Built on BNB Chain",
+        card3_desc: "Leveraging BNB Chain for low fees, high throughput, and scalable node operations.",
+        wp_title: "Whitepaper",
+        wp_desc: "Learn about the technology, tokenomics, and roadmap of Omniverse Compute.",
+        wp_deck_title: "Whitepaper Deck",
+        wp_deck_desc: "Concise presentation version of the project overview.",
+        btn_download_deck: "Download Deck",
+        wp_full_title: "Full Whitepaper (English)",
+        wp_full_desc: "Complete technical and economic documentation.",
+        btn_download_full: "Download Full Whitepaper",
+        tn_title: "Testnet",
+        tn_desc: "The Omniverse Compute testnet is currently in preparation. Node operators will soon be able to experience staking, compute contribution, and reward mechanisms.",
+        tn_status_title: "Current Status",
+        tn_status_label: "Status:",
+        tn_status_value: "Coming Soon",
+        tn_status_desc: "Official launch details and access instructions will be announced via Twitter and Telegram.",
+        btn_follow: "Follow Official Twitter",
+        ad_title: "Airdrop",
+        ad_desc: "Complete the following tasks to become eligible for the early contributor airdrop.",
+        ad_step1_title: "Follow Official Twitter",
+        ad_step1_desc: "Follow @Omniverse_Depin",
+        ad_step2_title: "Retweet & Comment",
+        ad_step2_desc: "Retweet the official announcement post and leave a meaningful comment",
+        ad_step3_title: "Join Official Telegram",
+        ad_step3_desc: "Join the official Telegram group (link will be updated soon)",
+        btn_complete: "Complete Tasks",
+        ad_note: "* Final eligibility and snapshot details will be announced by the official team.",
+        footer_copy: "© 2026 Omniverse Compute ($OMC). All rights reserved."
+      },
+      zh: {
+        nav_home: "主页",
+        nav_whitepaper: "白皮书",
+        nav_testnet: "测试网",
+        nav_airdrop: "空投",
+        home_title: "下一代去中心化<br>GPU算力网络",
+        home_desc: "Omniverse Compute ($OMC) 正在构建基于BNB Chain的下一代去中心化GPU算力网络。质押代币、共享闲置GPU算力，共同推动AI训练与高性能渲染的未来。",
+        btn_airdrop: "参与空投",
+        btn_whitepaper: "阅读白皮书",
+        card1_title: "去中心化算力",
+        card1_desc: "任何人都可以贡献闲置GPU资源并获得$OMC奖励，打造真正开放的算力市场。",
+        card2_title: "聚焦AI与渲染",
+        card2_desc: "专为AI模型训练、推理以及高质量渲染任务优化。",
+        card3_title: "基于BNB Chain",
+        card3_desc: "利用BNB Chain低手续费、高吞吐量的优势，支持大规模节点运营。",
+        wp_title: "白皮书",
+        wp_desc: "深入了解Omniverse Compute的技术架构、代币经济与发展路线。",
+        wp_deck_title: "白皮书Deck",
+        wp_deck_desc: "简洁版项目介绍演示文档。",
+        btn_download_deck: "下载Deck",
+        wp_full_title: "完整白皮书（英文）",
+        wp_full_desc: "完整的技术与经济模型文档。",
+        btn_download_full: "下载完整白皮书",
+        tn_title: "测试网",
+        tn_desc: "Omniverse Compute测试网目前正在筹备中。节点运营者即将可以体验质押、算力贡献与奖励机制。",
+        tn_status_title: "当前状态",
+        tn_status_label: "状态：",
+        tn_status_value: "即将上线",
+        tn_status_desc: "正式上线详情和接入方式将通过Twitter和Telegram公布。",
+        btn_follow: "关注官方推特",
+        ad_title: "空投",
+        ad_desc: "完成以下任务即可获得早期贡献者空投资格。",
+        ad_step1_title: "关注官方推特",
+        ad_step1_desc: "关注 @Omniverse_Depin",
+        ad_step2_title: "转推并评论",
+        ad_step2_desc: "转推官方公告帖并留下有意义的评论",
+        ad_step3_title: "加入官方电报群",
+        ad_step3_desc: "加入官方Telegram群组（链接即将更新）",
+        btn_complete: "去完成任务",
+        ad_note: "* 最终资格与快照详情以官方公布为准。",
+        footer_copy: "© 2026 Omniverse Compute ($OMC). 保留所有权利。"
+      },
+      ja: {
+        nav_home: "ホーム",
+        nav_whitepaper: "ホワイトペーパー",
+        nav_testnet: "テストネット",
+        nav_airdrop: "エアドロップ",
+        home_title: "次世代分散型<br>GPUコンピュートネットワーク",
+        home_desc: "Omniverse Compute ($OMC) はBNB Chain上に構築される次世代分散型GPUコンピュートネットワークです。トークンをステークし、遊休GPUを共有することで、AIトレーニングと高性能レンダリングの未来を支えます。",
+        btn_airdrop: "エアドロップに参加",
+        btn_whitepaper: "ホワイトペーパーを読む",
+        card1_title: "分散型コンピュート",
+        card1_desc: "誰でも遊休GPUリソースを提供して$OMC報酬を獲得でき、真にオープンなコンピュート市場を創出します。",
+        card2_title: "AI & レンダリング特化",
+        card2_desc: "AIモデルのトレーニング、推論、高品質レンダリングワークロードに最適化。",
+        card3_title: "BNB Chain上に構築",
+        card3_desc: "BNB Chainの低手数料・高スループットを活用し、スケーラブルなノード運用を実現。",
+        wp_title: "ホワイトペーパー",
+        wp_desc: "Omniverse Computeの技術、トークノミクス、ロードマップについて詳しく知る。",
+        wp_deck_title: "ホワイトペーパー Deck",
+        wp_deck_desc: "プロジェクト概要の簡潔なプレゼンテーション版。",
+        btn_download_deck: "Deckをダウンロード",
+        wp_full_title: "完全版ホワイトペーパー（英語）",
+        wp_full_desc: "技術および経済モデルの完全なドキュメント。",
+        btn_download_full: "完全版をダウンロード",
+        tn_title: "テストネット",
+        tn_desc: "Omniverse Computeのテストネットは現在準備中です。ノードオペレーターは近日中にステーキング、コンピュート提供、報酬メカニズムを体験できます。",
+        tn_status_title: "現在のステータス",
+        tn_status_label: "ステータス：",
+        tn_status_value: "近日公開",
+        tn_status_desc: "正式ローンチの詳細はTwitterとTelegramで発表されます。",
+        btn_follow: "公式Twitterをフォロー",
+        ad_title: "エアドロップ",
+        ad_desc: "以下のタスクを完了すると早期貢献者エアドロップの対象になります。",
+        ad_step1_title: "公式Twitterをフォロー",
+        ad_step1_desc: "@Omniverse_Depin をフォロー",
+        ad_step2_title: "リツイート＆コメント",
+        ad_step2_desc: "公式発表ポストをリツイートし、意味のあるコメントを残す",
+        ad_step3_title: "公式Telegramに参加",
+        ad_step3_desc: "公式Telegramグループに参加（リンクは近日更新）",
+        btn_complete: "タスクを完了する",
+        ad_note: "* 最終的な資格とスナップショットの詳細は公式発表に従います。",
+        footer_copy: "© 2026 Omniverse Compute ($OMC). All rights reserved."
+      },
+      es: {
+        nav_home: "Inicio",
+        nav_whitepaper: "Whitepaper",
+        nav_testnet: "Testnet",
+        nav_airdrop: "Airdrop",
+        home_title: "Red de Cómputo GPU<br>Descentralizada de Nueva Generación",
+        home_desc: "Omniverse Compute ($OMC) está construyendo la red de cómputo GPU descentralizada de próxima generación en BNB Chain. Haz stake, comparte poder GPU inactivo y ayuda a impulsar el futuro del entrenamiento de IA y el renderizado de alto rendimiento.",
+        btn_airdrop: "Unirse al Airdrop",
+        btn_whitepaper: "Leer Whitepaper",
+        card1_title: "Cómputo Descentralizado",
+        card1_desc: "Cualquiera puede contribuir recursos GPU inactivos y ganar recompensas $OMC, creando un mercado de cómputo verdaderamente abierto.",
+        card2_title: "Enfoque en IA y Renderizado",
+        card2_desc: "Optimizado para entrenamiento de modelos de IA, inferencia y cargas de trabajo de renderizado de alta calidad.",
+        card3_title: "Construido en BNB Chain",
+        card3_desc: "Aprovechando BNB Chain para bajas comisiones, alto rendimiento y operaciones de nodos escalables.",
+        wp_title: "Whitepaper",
+        wp_desc: "Conoce la tecnología, tokenomics y hoja de ruta de Omniverse Compute.",
+        wp_deck_title: "Whitepaper Deck",
+        wp_deck_desc: "Versión concisa de presentación del proyecto.",
+        btn_download_deck: "Descargar Deck",
+        wp_full_title: "Whitepaper Completo (Inglés)",
+        wp_full_desc: "Documentación técnica y económica completa.",
+        btn_download_full: "Descargar Whitepaper Completo",
+        tn_title: "Testnet",
+        tn_desc: "La testnet de Omniverse Compute está actualmente en preparación. Los operadores de nodos pronto podrán experimentar el staking, la contribución de cómputo y los mecanismos de recompensa.",
+        tn_status_title: "Estado Actual",
+        tn_status_label: "Estado:",
+        tn_status_value: "Próximamente",
+        tn_status_desc: "Los detalles del lanzamiento oficial se anunciarán a través de Twitter y Telegram.",
+        btn_follow: "Seguir Twitter Oficial",
+        ad_title: "Airdrop",
+        ad_desc: "Completa las siguientes tareas para ser elegible para el airdrop de contribuidores tempranos.",
+        ad_step1_title: "Seguir Twitter Oficial",
+        ad_step1_desc: "Sigue a @Omniverse_Depin",
+        ad_step2_title: "Retweet y Comentar",
+        ad_step2_desc: "Haz retweet de la publicación oficial y deja un comentario significativo",
+        ad_step3_title: "Unirse al Telegram Oficial",
+        ad_step3_desc: "Únete al grupo oficial de Telegram (el enlace se actualizará pronto)",
+        btn_complete: "Completar Tareas",
+        ad_note: "* La elegibilidad final y los detalles del snapshot serán anunciados por el equipo oficial.",
+        footer_copy: "© 2026 Omniverse Compute ($OMC). Todos los derechos reservados."
+      },
+      ko: {
+        nav_home: "홈",
+        nav_whitepaper: "백서",
+        nav_testnet: "테스트넷",
+        nav_airdrop: "에어드롭",
+        home_title: "차세대 탈중앙화<br>GPU 컴퓨팅 네트워크",
+        home_desc: "Omniverse Compute ($OMC)는 BNB Chain 기반의 차세대 탈중앙화 GPU 컴퓨팅 네트워크를 구축하고 있습니다. 토큰을 스테이킹하고 유휴 GPU 성능을 공유하여 AI 훈련과 고성능 렌더링의 미래를 지원하세요.",
+        btn_airdrop: "에어드롭 참여",
+        btn_whitepaper: "백서 읽기",
+        card1_title: "탈중앙화 컴퓨팅",
+        card1_desc: "누구나 유휴 GPU 자원을 제공하고 $OMC 보상을 받을 수 있어 진정한 개방형 컴퓨팅 시장을 만듭니다.",
+        card2_title: "AI 및 렌더링 특화",
+        card2_desc: "AI 모델 훈련, 추론 및 고품질 렌더링 워크로드에 최적화되어 있습니다.",
+        card3_title: "BNB Chain 기반",
+        card3_desc: "BNB Chain의 낮은 수수료와 높은 처리량을 활용하여 확장 가능한 노드 운영을 지원합니다.",
+        wp_title: "백서",
+        wp_desc: "Omniverse Compute의 기술, 토크노믹스 및 로드맵에 대해 알아보세요.",
+        wp_deck_title: "백서 Deck",
+        wp_deck_desc: "프로젝트 개요의 간결한 프레젠테이션 버전입니다.",
+        btn_download_deck: "Deck 다운로드",
+        wp_full_title: "전체 백서 (영어)",
+        wp_full_desc: "완전한 기술 및 경제 문서입니다.",
+        btn_download_full: "전체 백서 다운로드",
+        tn_title: "테스트넷",
+        tn_desc: "Omniverse Compute 테스트넷은 현재 준비 중입니다. 노드 운영자는 곧 스테이킹, 컴퓨팅 기여 및 보상 메커니즘을 경험할 수 있습니다.",
+        tn_status_title: "현재 상태",
+        tn_status_label: "상태:",
+        tn_status_value: "곧 출시",
+        tn_status_desc: "공식 출시 세부 사항은 Twitter와 Telegram을 통해 발표됩니다.",
+        btn_follow: "공식 트위터 팔로우",
+        ad_title: "에어드롭",
+        ad_desc: "다음 작업을 완료하면 초기 기여자 에어드롭 자격을 얻을 수 있습니다.",
+        ad_step1_title: "공식 트위터 팔로우",
+        ad_step1_desc: "@Omniverse_Depin 팔로우",
+        ad_step2_title: "리트윗 및 댓글",
+        ad_step2_desc: "공식 발표 게시물을 리트윗하고 의미 있는 댓글을 남기세요",
+        ad_step3_title: "공식 텔레그램 가입",
+        ad_step3_desc: "공식 텔레그램 그룹에 가입하세요 (링크 곧 업데이트)",
+        btn_complete: "작업 완료하기",
+        ad_note: "* 최종 자격 및 스냅샷 세부 사항은 공식 팀에서 발표합니다.",
+        footer_copy: "© 2026 Omniverse Compute ($OMC). All rights reserved."
+      },
+      pt: {
+        nav_home: "Início",
+        nav_whitepaper: "Whitepaper",
+        nav_testnet: "Testnet",
+        nav_airdrop: "Airdrop",
+        home_title: "Rede de Computação GPU<br>Descentralizada de Nova Geração",
+        home_desc: "Omniverse Compute ($OMC) está construindo a rede de computação GPU descentralizada de próxima geração na BNB Chain. Faça stake, compartilhe poder de GPU ocioso e ajude a impulsionar o futuro do treinamento de IA e renderização de alto desempenho.",
+        btn_airdrop: "Participar do Airdrop",
+        btn_whitepaper: "Ler Whitepaper",
+        card1_title: "Computação Descentralizada",
+        card1_desc: "Qualquer pessoa pode contribuir com recursos de GPU ociosos e ganhar recompensas $OMC, criando um mercado de computação verdadeiramente aberto.",
+        card2_title: "Foco em IA e Renderização",
+        card2_desc: "Otimizado para treinamento de modelos de IA, inferência e cargas de trabalho de renderização de alta qualidade.",
+        card3_title: "Construído na BNB Chain",
+        card3_desc: "Aproveitando a BNB Chain para baixas taxas, alto rendimento e operações de nós escaláveis.",
+        wp_title: "Whitepaper",
+        wp_desc: "Conheça a tecnologia, tokenomics e roadmap do Omniverse Compute.",
+        wp_deck_title: "Whitepaper Deck",
+        wp_deck_desc: "Versão concisa de apresentação do projeto.",
+        btn_download_deck: "Baixar Deck",
+        wp_full_title: "Whitepaper Completo (Inglês)",
+        wp_full_desc: "Documentação técnica e econômica completa.",
+        btn_download_full: "Baixar Whitepaper Completo",
+        tn_title: "Testnet",
+        tn_desc: "A testnet do Omniverse Compute está atualmente em preparação. Operadores de nós em breve poderão experimentar staking, contribuição de computação e mecanismos de recompensa.",
+        tn_status_title: "Status Atual",
+        tn_status_label: "Status:",
+        tn_status_value: "Em breve",
+        tn_status_desc: "Os detalhes do lançamento oficial serão anunciados via Twitter e Telegram.",
+        btn_follow: "Seguir Twitter Oficial",
+        ad_title: "Airdrop",
+        ad_desc: "Complete as seguintes tarefas para se tornar elegível ao airdrop de contribuidores iniciais.",
+        ad_step1_title: "Seguir Twitter Oficial",
+        ad_step1_desc: "Siga @Omniverse_Depin",
+        ad_step2_title: "Retweet e Comentar",
+        ad_step2_desc: "Faça retweet da postagem oficial e deixe um comentário significativo",
+        ad_step3_title: "Entrar no Telegram Oficial",
+        ad_step3_desc: "Entre no grupo oficial do Telegram (o link será atualizado em breve)",
+        btn_complete: "Completar Tarefas",
+        ad_note: "* A elegibilidade final e os detalhes do snapshot serão anunciados pela equipe oficial.",
+        footer_copy: "© 2026 Omniverse Compute ($OMC). Todos os direitos reservados."
+      },
+      fr: {
+        nav_home: "Accueil",
+        nav_whitepaper: "Whitepaper",
+        nav_testnet: "Testnet",
+        nav_airdrop: "Airdrop",
+        home_title: "Réseau de Calcul GPU<br>Décentralisé de Nouvelle Génération",
+        home_desc: "Omniverse Compute ($OMC) construit le réseau de calcul GPU décentralisé de nouvelle génération sur BNB Chain. Stakez des tokens, partagez la puissance GPU inactive et aidez à propulser l'avenir de l'entraînement IA et du rendu haute performance.",
+        btn_airdrop: "Rejoindre l'Airdrop",
+        btn_whitepaper: "Lire le Whitepaper",
+        card1_title: "Calcul Décentralisé",
+        card1_desc: "N'importe qui peut contribuer des ressources GPU inactives et gagner des récompenses $OMC, créant un véritable marché de calcul ouvert.",
+        card2_title: "Focus IA & Rendu",
+        card2_desc: "Optimisé pour l'entraînement de modèles IA, l'inférence et les charges de travail de rendu de haute qualité.",
+        card3_title: "Construit sur BNB Chain",
+        card3_desc: "Exploite BNB Chain pour de faibles frais, un haut débit et des opérations de nœuds évolutives.",
+        wp_title: "Whitepaper",
+        wp_desc: "Découvrez la technologie, la tokenomics et la feuille de route d'Omniverse Compute.",
+        wp_deck_title: "Whitepaper Deck",
+        wp_deck_desc: "Version concise de présentation du projet.",
+        btn_download_deck: "Télécharger le Deck",
+        wp_full_title: "Whitepaper Complet (Anglais)",
+        wp_full_desc: "Documentation technique et économique complète.",
+        btn_download_full: "Télécharger le Whitepaper Complet",
+        tn_title: "Testnet",
+        tn_desc: "Le testnet d'Omniverse Compute est actuellement en préparation. Les opérateurs de nœuds pourront bientôt expérimenter le staking, la contribution de calcul et les mécanismes de récompense.",
+        tn_status_title: "Statut Actuel",
+        tn_status_label: "Statut :",
+        tn_status_value: "Bientôt disponible",
+        tn_status_desc: "Les détails du lancement officiel seront annoncés via Twitter et Telegram.",
+        btn_follow: "Suivre le Twitter Officiel",
+        ad_title: "Airdrop",
+        ad_desc: "Complétez les tâches suivantes pour devenir éligible à l'airdrop des contributeurs précoces.",
+        ad_step1_title: "Suivre le Twitter Officiel",
+        ad_step1_desc: "Suivez @Omniverse_Depin",
+        ad_step2_title: "Retweet & Commenter",
+        ad_step2_desc: "Retweetez la publication officielle et laissez un commentaire pertinent",
+        ad_step3_title: "Rejoindre le Telegram Officiel",
+        ad_step3_desc: "Rejoignez le groupe Telegram officiel (le lien sera mis à jour bientôt)",
+        btn_complete: "Compléter les Tâches",
+        ad_note: "* L'éligibilité finale et les détails du snapshot seront annoncés par l'équipe officielle.",
+        footer_copy: "© 2026 Omniverse Compute ($OMC). Tous droits réservés."
+      }
+    };
+
+    // 切换语言
+    function changeLanguage(lang) {
+      localStorage.setItem('omc_lang', lang);
+      const t = translations[lang] || translations.en;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.value = t[key];
+          } else {
+            el.innerHTML = t[key];
+          }
+        }
       });
+
+      // 更新html lang属性
+      document.documentElement.lang = lang;
+    }
+
+    // 页面切换
+    function showPage(pageId) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
 
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
-        if (link.dataset.page === pageId) {
-          link.classList.add('active');
-        }
+        if (link.dataset.page === pageId) link.classList.add('active');
       });
 
       window.scrollTo(0, 0);
     }
+
+    // 初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('omc_lang') || 'en';
+      document.getElementById('langSelect').value = savedLang;
+      changeLanguage(savedLang);
+    });
   </script>
 </body>
 </html>
