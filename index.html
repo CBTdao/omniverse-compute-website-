@@ -1,1 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omniverse Compute ($OMC) | Decentralized GPU Compute Network</title>
+  <meta name="description" content="Omniverse Compute ($OMC) - The Next-Gen Decentralized GPU Compute Network on BNB Chain. Stake, share idle power, and power the AI & Rendering future.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    :root {
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --accent: #22d3ee;
+      --bg: #0b0f1a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(11, 15, 26, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #ffffff;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 8rem 2rem 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: none;
+    }
+
+    section.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 3.1rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 20%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      color: #ffffff;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      max-width: 680px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.8rem;
+      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-right: 1rem;
+      transition: all 0.25s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary-light);
+      background: rgba(99, 102, 241, 0.1);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+      color: white;
+    }
+
+    .airdrop-box {
+      background: linear-gradient(145deg, #111827, #0f172a);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-top: 2.5rem;
+      max-width: 720px;
+    }
+
+    .condition {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+      padding: 1.1rem;
+      background: rgba(99, 102, 241, 0.08);
+      border-radius: 12px;
+    }
+
+    .condition-number {
+      background: var(--primary);
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--primary-light);
+      text-decoration: none;
+      margin: 0 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.3rem; }
+      .nav-links { gap: 1.1rem; font-size: 0.95rem; }
+      nav { padding: 1rem 1.2rem; }
+      section { padding: 7rem 1.2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a class="logo" onclick="showPage('home')">Omniverse Compute</a>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" class="nav-link active" data-page="home">Home</a></li>
+      <li><a onclick="showPage('whitepaper')" class="nav-link" data-page="whitepaper">Whitepaper</a></li>
+      <li><a onclick="showPage('testnet')" class="nav-link" data-page="testnet">Testnet</a></li>
+      <li><a onclick="showPage('airdrop')" class="nav-link" data-page="airdrop">Airdrop</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home -->
+  <section id="home" class="active">
+    <h1>Next-Gen Decentralized<br>GPU Compute Network</h1>
+    <p>
+      Omniverse Compute ($OMC) is building the next-generation decentralized GPU compute network on BNB Chain. 
+      Stake tokens, share idle GPU power, and help power the future of AI training and high-performance rendering.
+    </p>
+    <div>
+      <a class="btn" onclick="showPage('airdrop')">Join Airdrop</a>
+      <a class="btn btn-outline" onclick="showPage('whitepaper')">Read Whitepaper</a>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Decentralized Compute</h3>
+        <p>Anyone can contribute idle GPU resources and earn $OMC rewards, creating a truly open compute marketplace.</p>
+      </div>
+      <div class="card">
+        <h3>AI & Rendering Focus</h3>
+        <p>Optimized for AI model training, inference, and high-quality rendering workloads.</p>
+      </div>
+      <div class="card">
+        <h3>Built on BNB Chain</h3>
+        <p>Leveraging BNB Chain for low fees, high throughput, and scalable node operations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Whitepaper -->
+  <section id="whitepaper">
+    <h2>Whitepaper</h2>
+    <p>Learn about the technology, tokenomics, and roadmap of Omniverse Compute.</p>
+
+    <div class="grid" style="margin-top: 3rem;">
+      <div class="card">
+        <h3>Whitepaper Deck</h3>
+        <p style="margin-bottom: 1.5rem;">Concise presentation version of the project overview.</p>
+        <a href="assets/Omniverse Compute (OMC) Whitepaper Deck.pdf" class="btn" download>
+          Download Deck
+        </a>
+      </div>
+      <div class="card">
+        <h3>Full Whitepaper (English)</h3>
+        <p style="margin-bottom: 1.5rem;">Complete technical and economic documentation.</p>
+        <a href="assets/Omniverse Compute (OMC) Whitepaper - English Version.pdf" class="btn" download>
+          Download Full Whitepaper
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testnet -->
+  <section id="testnet">
+    <h2>Testnet</h2>
+    <p>
+      The Omniverse Compute testnet is currently in preparation. Node operators will soon be able to experience staking, compute contribution, and reward mechanisms.
+    </p>
+
+    <div class="card" style="margin-top: 2.5rem; max-width: 680px;">
+      <h3>Current Status</h3>
+      <p style="margin: 1rem 0;">Status: <strong style="color: var(--accent);">Coming Soon</strong></p>
+      <p>Official launch details and access instructions will be announced via Twitter and Telegram.</p>
+      <div style="margin-top: 1.8rem;">
+        <a href="https://x.com/Omniverse_Depin" target="_blank" class="btn">Follow Official Twitter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Airdrop -->
+  <section id="airdrop">
+    <h2>Airdrop</h2>
+    <p>Complete the following tasks to become eligible for the early contributor airdrop.</p>
+
+    <div class="airdrop-box">
+      <div class="condition">
+        <div class="condition-number">1</div>
+        <div>
+          <strong>Follow Official Twitter</strong><br>
+          Follow <a href="https://x.com/Omniverse_Depin" target="_blank" style="color: var(--accent);">@Omniverse_Depin</a>
+        </div>
+      </div>
+
+      <div class="condition">
+        <div class="condition-number">2</div>
+        <div>
+          <strong>Retweet & Comment</strong><br>
+          Retweet the official announcement post and leave a meaningful comment
+        </div>
+      </div>
+
+      <div class="condition">
+        <div class="condition-number">3</div>
+        <div>
+          <strong>Join Official Telegram</strong><br>
+          Join the official Telegram group (link will be updated soon)
+        </div>
+      </div>
+
+      <div style="margin-top: 2.2rem; text-align: center;">
+        <a href="https://x.com/Omniverse_Depin" target="_blank" class="btn">Complete Tasks</a>
+        <p style="margin-top: 1.3rem; font-size: 0.95rem; color: var(--muted);">
+          * Final eligibility and snapshot details will be announced by the official team.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <a href="https://x.com/Omniverse_Depin" target="_blank">Twitter / X</a>
+      <a href="#" onclick="alert('Please replace with the real Telegram link')">Telegram</a>
+    </div>
+    <p style="margin-top: 1.3rem;">© 2026 Omniverse Compute ($OMC). All rights reserved.</p>
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(pageId).classList.add('active');
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.dataset.page === pageId) {
+          link.classList.add('active');
+        }
+      });
+
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>
